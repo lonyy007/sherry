@@ -1,7 +1,13 @@
 package task4;
 
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+
 public class CarProcessing {
-    public static void main(String[] args) {
+    @Test
+    void removeDumplactes() {
 
         CarProcessing cp = new CarProcessing();
 
@@ -20,13 +26,21 @@ public class CarProcessing {
                 new Car("Honda", "Civic", "Purple")
         };
 
+        Car[] cars2 = {
+                new Car("Honda", "Civic", "Red"),
+                new Car("Jeep", "Wrangler", "Blue"),
+                new Car("Jeep", "Wrangler", "Green"),
+                new Car("Holden", "Falcon", "Yellow"),
+                new Car("Honda", "Civic", "Blue"),
+                new Car("Honda", "Falcon", "Blue"),
+                new Car("Honda", "Civic", "Purple")
+        };
+
         Car[] noDuplicates = cp.removeDuplicates(cars);
 
-        for (Car c : noDuplicates) {
-            System.out.println(c);
-        }
-    }
 
+        assertArrayEquals(cars2,noDuplicates,"Not consistent with the expected results");
+    }
 
     public Car[] removeDuplicates(Car[] inputArray) {
 
